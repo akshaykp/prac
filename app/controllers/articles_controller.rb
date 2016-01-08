@@ -34,16 +34,17 @@ class ArticlesController < ApplicationController
 
 	def show
 		@article = Article.find(params[:id])
+		@comment = @article.comments.build
 	end
 
-	def delete
+	def destroy
 		@article = Article.find(params[:id])
 		
 		@article.destroy
 
 		redirect_to articles_path
 	end
-	
+
 
 private
 	def article_params
